@@ -49,3 +49,93 @@ model = Sequential()
 # Implement here #
 ##################
 
+# add to the model: Convolution layer with 32 output filters, a kernel size of 3x3
+model.add(keras.layers.Conv2D(
+    filters=32,  # 32 output filters
+    kernel_size=(3, 3),  # kernel size of 3x3
+    input_shape=(28, 28, 1),  # for 28x28 pictures with one channel
+    data_format='channels_last'  # The channel ist last in the data
+    )
+)
+
+# Convolution layer with 64 output filters, a kernel size of 3x3
+model.add(keras.layers.Conv2D(
+    filters=64,  # 64 output filters
+    kernel_size=(3, 3),  # kernel size of 3x3
+    input_shape=(28, 28, 1),  # for 28x28 pictures with one channel
+    data_format='channels_last'  # The channel ist last in the data
+    )
+)
+
+# Maxpooling layer with a pool size of 2x2
+model.add(keras.layers.MaxPooling2D(
+    pool_size=(2, 2),  # pool size of 2x2
+    strides=None,
+    padding='valid',
+    data_format='channels_last'
+    )
+)
+
+# Dropout layer with a drop fraction of 0.5
+model.add(keras.layers.Dropout(
+    rate=0.5,  # drop fraction of 0.5
+    noise_shape=None,
+    seed=None
+    )
+)
+
+# Flatten layer
+model.add(keras.layers.Flatten(
+    data_format='channels_last'
+    )
+)
+
+# Fully-connected layer with 128 neurons
+model.add(Dense( # Fully-connected layer
+        128, # with 128 neurons
+        activation='relu'
+    )
+)
+
+# Dropout layer with a drop fraction of 0.5
+model.add(keras.layers.Dropout(
+    rate=0.5,  # drop fraction of 0.5
+    noise_shape=None,
+    seed=None
+    )
+)
+
+# Fully-connected layer with as many neurons as there are classes in the problem (Output layer), activation function: Softmax
+
+# I assumed, that the following message, which was thrown at "model.fit" mend, i have to put a "10" in here
+# ValueError: Error when checking target: expected dropout_2 to have shape (128,) but got array with shape (10,)
+model.add(Dense(10, activation='softmax'))
+
+
+
+print('config of model: ', model.get_config())
+
+
+adam = keras.optimizers.Adam(lr=0.001,  # Learning rate: 0.001
+                             beta_1=0.9,
+                             beta_2=0.999,
+                             epsilon=None,
+                             decay=0.0,
+                             amsgrad=False
+                             )
+
+model.compile(optimizer=adam,  # Optimizer: Adam
+              loss="categorical_crossentropy",  # Loss: Categorical Crossentropy
+              metrics=['accuracy']  # Evaluation Metric: Accuracy
+              )
+
+model.fit(x_train, y_train,
+          epochs=3,  # Epochs: 3
+          batch_size=128  # Batch size: 128
+          )
+
+score = model.evaluate(x_test, y_test, batch_size=128)
+
+print('Evaluation score:  ', score)
+
+model.save("model.h5") # saves the model
