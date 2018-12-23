@@ -1,5 +1,5 @@
 ## Installation Process:
-I tried a little bit around to get it working, this is what i came up with:
+I tried a little bit around to get it working, this is what I came up with:
 
 ### Prequisites:
 
@@ -28,3 +28,4 @@ I tried a little bit around to get it working, this is what i came up with:
 - Prediction.py
     - Takes the model from the current directory
     - Makes a prediction with the images from the 'digitsToPredict' directory
+    - digit3.png is the given image, we should use for this exercise

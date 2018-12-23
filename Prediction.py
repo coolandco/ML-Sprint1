@@ -3,7 +3,7 @@ import os
 import skimage
 
 from skimage import io
-from skimage.filters import threshold_minimum as threshold
+from skimage.filters import threshold_minimum as threshold # seemed to have good results
 import numpy as np
 
 

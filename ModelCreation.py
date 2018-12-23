@@ -45,6 +45,12 @@ model = Sequential()
 # Implement here #
 ##################
 
+#
+#  All properties of the layers, that are commented, are from the E-Mail
+#  All other properties are assumptions, that were tested and seemed to be the right choice
+#
+
+
 # add to the model: Convolution layer with 32 output filters, a kernel size of 3x3
 model.add(keras.layers.Conv2D(
     filters=32,  # 32 output filters
