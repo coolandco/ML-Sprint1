@@ -1,4 +1,15 @@
-## Installation Process:
+# Running:
+Use Python 3 to start following scripts:
+
+- ModelCreation.py
+    - Trains a model with the mnist dataset.
+    - Places model into current directory
+- Prediction.py
+    - Takes the model from the current directory
+    - Makes a prediction with the images from the 'digitsToPredict' directory
+    - digit3.png is the given image, we should use for this exercise
+
+# Installation Process for Development:
 I tried a little bit around to get it working, this is what I came up with:
 
 ### Prequisites:
@@ -6,8 +17,7 @@ I tried a little bit around to get it working, this is what I came up with:
 - PyCharm (start the 64Bit Version)
 - Latest Python 3.6 (64Bit)
 
-### Installation
-... is done in PyCharm:
+### Installation of the imports in PyCharm
 1. Tensorflow:
     - Upgrade your pip in your Virtual Enviroment (venv):
 		- Run the following command two times, if it fails the first time
@@ -19,13 +29,3 @@ I tried a little bit around to get it working, this is what I came up with:
 
 3. Skyimage
     - PyCharm Terminal `pip install scikit-image`
-
-# Running:
-
-- ModelCreation.py
-    - Trains a model for the mnist dataset.
-    - Places model into current directory
-- Prediction.py
-    - Takes the model from the current directory
-    - Makes a prediction with the images from the 'digitsToPredict' directory
-    - digit3.png is the given image, we should use for this exercise
